@@ -153,7 +153,9 @@ class VPollerWorkerManager(object):
         """
         logger.debug('Loading config file %s', self.config_file)
 
-        parser = ConfigParser(self.config_defaults)
+        #This lie gave an error with python > 3.7
+        #parser = ConfigParser(self.config_defaults)
+        parser = ConfigParser()
         parser.read(self.config_file)
 
         self.config['mgmt'] = parser.get('worker', 'mgmt')
